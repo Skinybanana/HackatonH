@@ -18,12 +18,14 @@
             <td >Author</td>
             <td >Duration</td>
             <td >Availability</td>
+            <td ></td>
             
           <tr scope="row"class="thead-light" *ngFor="let course of courses">
             <td>{{course.courseName}}</td>
             <td>{{course.authorName}}</td>
             <td>{{course.duration}} Hours</td>
             <td>{{course.availability}}</td>
+            <td ><button (click)="deleteCourse(course.courseId!)" type="button" class="btn btn-danger">Delete</button></td>
           </tr>
         </tbody>
       </table>

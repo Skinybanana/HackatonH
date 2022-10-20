@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../model/course.model';
 import { CourseService } from '../services/course.service';
@@ -15,6 +16,20 @@ export class CourseListComponent implements OnInit {
   constructor(private courseService:CourseService) { }
 
   ngOnInit(): void {
+    this.updateCourses()
+  }
+  deleteCourse(courseId: number){
+    console.log(courseId)
+    if (window.confirm("Do you really want to Delete the course")) {
+      this.courseService.deleteCourse(courseId).subscribe((data) =>{
+        window.alert("Course deleted")
+        this.updateCourses()
+      })
+    }
+    
+  }
+
+  updateCourses(){
     this.courseService.getAllCourses().subscribe( 
       (data) => {
         this.courses = data;

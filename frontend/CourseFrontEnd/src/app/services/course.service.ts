@@ -15,4 +15,13 @@ export class CourseService {
   getAllCourses(){
     return this.httpClient.get<Course[]>(this.baseUrl)
   }
+
+  saveCourse(course: Course){
+    return this.httpClient.post<Course>(this.baseUrl+"/create",course)
+
+  }
+
+  deleteCourse( courseId:number){
+    return this.httpClient.delete(this.baseUrl+"/delete/" + courseId)
+  }
 }

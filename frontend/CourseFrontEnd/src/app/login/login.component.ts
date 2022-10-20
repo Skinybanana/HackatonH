@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from '../model/user.model';
 import { UserService } from '../services/user.service';
 
@@ -12,30 +13,31 @@ export class LoginComponent implements OnInit {
 
   // UserForm?: FormGroup;
   users?: User[];
-  
-  constructor(private userService: UserService) { }
+
+  constructor(private userService: UserService, private router:Router) { }
 
   ngOnInit(): void {
-  
+
   }
 
-  checkLogin(){
-    const username =  document.getElementById('user') as HTMLInputElement
-    const password =  document.getElementById('user') as HTMLInputElement
-    if(username != null ){
-      this.userService.getUserByUsernameAndPass(username.value, password.value).subscribe((data) =>{
+  checkLogin() {
+    const username = document.getElementById('user') as HTMLInputElement
+    const password = document.getElementById('user') as HTMLInputElement
+    if (username != null) {
+      this.userService.getUserByUsernameAndPass(username.value, password.value).subscribe((data) => {
         console.log(data);
         this.users = data;
-        if (data == null){
+        if (data == null) {
           window.alert("Wrong username or password");
-        } else{
-          window.alert("logged in");
-          
+        } else {
+
+          this.router.navigate(['/course-menu']);
+
         }
       })
-    } 
+    }
 
-   
+
   }
 
 }

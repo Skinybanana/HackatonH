@@ -1,1 +1,30 @@
-<p>course-add works!</p>
+<div class="container" style="width:650px">
+    <div class="jumbotron">
+      <h1> Add Course</h1>
+    </div>
+<form [formGroup]="addCourseForm">
+
+    <div>
+        <div class="form-group">
+            <label >Course Name:</label>
+            <input id = "courseName" type="text" class="form-control" formControlName="courseName" >
+        </div>
+        <div class="form-group">
+            <label >Author Name:</label>
+            <input id = "authorName" type="text" class="form-control" formControlName="authorName" >
+        </div>
+        <div class="form-group">
+            <label >Duration:</label>
+            <input id = "duration" type="number" class="form-control" formControlName="duration" >
+        </div>
+        <div class="form-group">
+            <label >Availability:</label>
+            <select id="availability" class="form-control" formControlName="availability">
+                <option selected value="available">Available</option>
+                <option value="unavailable">Unavailable</option>
+              </select>
+        </div>
+    </div>
+    <button (click)="saveCourse()" class="btn btn-info">Save</button>
+
+</form>
