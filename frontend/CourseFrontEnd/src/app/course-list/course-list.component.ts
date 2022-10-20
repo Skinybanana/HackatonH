@@ -1,5 +1,6 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Course } from '../model/course.model';
 import { CourseService } from '../services/course.service';
 
@@ -13,7 +14,7 @@ export class CourseListComponent implements OnInit {
   courses?: Course[];
 
 
-  constructor(private courseService:CourseService) { }
+  constructor(private courseService:CourseService, private router:Router) { }
 
   ngOnInit(): void {
     this.updateCourses()
@@ -36,4 +37,11 @@ export class CourseListComponent implements OnInit {
         console.log(this.courses)
     })
   }
+  goToCoursesAdd(){
+    this.router.navigate(['/course-menu']);
+  }
+  goToCoursesMenu(){
+    this.router.navigate(['/course-menu']);
+  }
+
 }

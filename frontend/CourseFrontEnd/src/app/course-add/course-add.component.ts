@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CourseService } from '../services/course.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { CourseService } from '../services/course.service';
 export class CourseAddComponent implements OnInit {
   addCourseForm!: FormGroup;
 
-  constructor(private formBuild: FormBuilder, private	courseService: CourseService) { }
+  constructor(private formBuild: FormBuilder, private	courseService: CourseService, private router:Router) { }
 
   ngOnInit(): void {
     this.addCourseForm = this.formBuild.group({
@@ -39,6 +40,9 @@ export class CourseAddComponent implements OnInit {
     this.courseService.saveCourse(this.addCourseForm.value).subscribe((data)=>{
       window.alert("course saved");
     })
+  }
+  goToCoursesMenu(){
+    this.router.navigate(['/course-menu']);
   }
 
 }
