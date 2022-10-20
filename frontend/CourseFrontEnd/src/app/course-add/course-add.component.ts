@@ -24,10 +24,10 @@ export class CourseAddComponent implements OnInit {
   }
 
   saveCourse(){
-
-    if(this.addCourseForm.value.courseName == '' ||
-      this.addCourseForm.value.authorName == '' ||
-      this.addCourseForm.value.duration == ''){
+    console.log(this.addCourseForm.value.courseName)
+    if(this.addCourseForm.value.courseName == '' || this.addCourseForm.value.courseName == null ||
+      this.addCourseForm.value.authorName == '' || this.addCourseForm.value.authorName == null ||
+      this.addCourseForm.value.duration == '' || this.addCourseForm.value.duration == null){
         window.alert("Some of the fields are empty");
         return
     }
